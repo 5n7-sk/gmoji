@@ -1,6 +1,9 @@
 package cmd
 
 import (
+	"fmt"
+
+	"github.com/fatih/color"
 	"github.com/skmatz/gmoji/cli"
 	"github.com/spf13/cobra"
 )
@@ -14,6 +17,8 @@ func runCopy(cmd *cobra.Command, args []string) error {
 	if err := c.Run(); err != nil {
 		return err
 	}
+
+	fmt.Printf("%s\n", color.GreenString("Copied to clipboard successfully"))
 
 	return nil
 }
