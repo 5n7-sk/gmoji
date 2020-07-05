@@ -5,6 +5,12 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/skmatz/gmoji/actions?query=workflow%3Arelease">
+    <img
+      src="https://github.com/skmatz/gmoji/workflows/release/badge.svg"
+      alt="release"
+    />
+  </a>
   <a href="./LICENSE">
     <img
       src="https://img.shields.io/github/license/skmatz/gmoji"
@@ -15,6 +21,12 @@
     <img
       src="https://img.shields.io/github/go-mod/go-version/skmatz/gmoji"
       alt="go version"
+    />
+  </a>
+  <a href="https://github.com/skmatz/gmoji/releases/latest">
+    <img
+      src="https://img.shields.io/github/v/release/skmatz/gmoji"
+      alt="release"
     />
   </a>
 </p>
@@ -66,4 +78,21 @@ gmoji hook
 # Add the file, commit it, and gmoji runs up automatically.
 git add .
 git commit
+```
+
+## Install
+
+### Binary
+
+Get binary from [releases](https://github.com/skmatz/gmoji/releases).  
+If you already have [jq](https://github.com/stedolan/jq) and [fzf](https://github.com/junegunn/fzf) or [peco](https://github.com/peco/peco), you can download binary by running the following command.
+
+```sh
+curl -Ls https://api.github.com/repos/skmatz/gmoji/releases/latest | jq -r ".assets[].browser_download_url" | fzf | wget -i -
+```
+
+### Source
+
+```sh
+go get github.com/skmatz/gmoji/...
 ```
