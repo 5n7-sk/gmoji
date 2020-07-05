@@ -11,9 +11,11 @@ import (
 
 // Run runs CLI.
 func (c CLI) Run() error {
-	_, err := c.GitRoot()
-	if err != nil {
-		return err
+	if c.CheckGit {
+		_, err := c.GitRoot()
+		if err != nil {
+			return err
+		}
 	}
 
 	p, err := c.ListPath()

@@ -9,7 +9,7 @@ import (
 )
 
 func runCopy(cmd *cobra.Command, args []string) error {
-	c, err := cli.NewCLI(true, "")
+	c, err := cli.NewCLI(false, true, "")
 	if err != nil {
 		return err
 	}

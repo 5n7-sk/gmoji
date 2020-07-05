@@ -6,7 +6,7 @@ import (
 )
 
 func runList(cmd *cobra.Command, args []string) error {
-	c, err := cli.NewCLI(false, "")
+	c, err := cli.NewCLI(false, false, "")
 	if err != nil {
 		return err
 	}
