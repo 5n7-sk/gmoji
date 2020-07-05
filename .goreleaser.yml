@@ -15,6 +15,10 @@ builds:
       - -X github.com/skmatz/gmoji/cmd/gmoji/cmd.Version={{.Version}}
     env:
       - CGO_ENABLED=0
+    goos:
+      - darwin
+      - linux
+      - windows
 
 archives:
   - name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}"
@@ -23,6 +27,7 @@ archives:
       amd64: x86_64
       darwin: darwin
       linux: linux
+      windows: windows
 
 release:
   prerelease: auto
