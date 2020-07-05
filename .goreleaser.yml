@@ -1,0 +1,28 @@
+project_name: gmoji
+
+env:
+  - GO111MODULE=on
+
+before:
+  hooks:
+    - go mod download
+
+builds:
+  - main: cmd/gmoji/main.go
+    binary: gmoji
+    ldflags:
+      - -s -w
+      - -X github.com/skmatz/gmoji/cmd/gmoji/cmd.Version={{.Version}}
+    env:
+      - CGO_ENABLED=0
+
+archives:
+  - name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}"
+    replacements:
+      386: i386
+      amd64: x86_64
+      darwin: darwin
+      linux: linux
+
+release:
+  prerelease: auto
