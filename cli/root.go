@@ -3,9 +3,11 @@ package cli
 import (
 	"fmt"
 	"io/ioutil"
+	"strings"
 
 	"github.com/AlecAivazis/survey/v2"
 	"github.com/atotto/clipboard"
+	"github.com/lithammer/fuzzysearch/fuzzy"
 	"github.com/skmatz/gmoji"
 )
 
@@ -31,8 +33,17 @@ func (c CLI) Run() error {
 	// FIXME: The width between the emoji and the hyphen is not consistent.
 	questions := []*survey.Question{
 		{
-			Name:     "emoji",
-			Prompt:   &survey.Select{Message: "Choose a gmoji", Options: gmojis.Selection()},
+			Name: "emoji",
+			Prompt: &survey.Select{
+				Message:  "Choose a gmoji",
+				Options:  gmojis.Selection(),
+				PageSize: 10,
+				Filter: func(filter string, value string, index int) bool {
+					f := strings.ToLower(filter)
+					g := gmojis[index]
+					return fuzzy.Match(f, strings.ToLower(g.Description)) || fuzzy.Match(f, strings.ToLower(g.Name))
+				},
+			},
 			Validate: survey.Required,
 		},
 		{

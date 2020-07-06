@@ -7,5 +7,6 @@ require (
 	github.com/atotto/clipboard v0.1.2
 	github.com/fatih/color v1.9.0
 	github.com/integralist/go-findroot v0.0.0-20160518114804-ac90681525dc
+	github.com/lithammer/fuzzysearch v1.1.0
 	github.com/spf13/cobra v1.0.0
 )
