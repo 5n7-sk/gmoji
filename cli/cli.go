@@ -59,12 +59,17 @@ func (c CLI) ListPath() (string, error) {
 }
 
 // Wget downloads a file from the given URL.
-func (c CLI) Wget(src, dst string) error {
+func (c CLI) Wget(src, dst string) (err error) {
 	response, err := http.Get(src)
 	if err != nil {
 		return err
 	}
-	defer response.Body.Close()
+	defer func() {
+		cerr := response.Body.Close()
+		if err == nil {
+			err = cerr
+		}
+	}()
 
 	dir := filepath.Dir(dst)
 	if err := os.MkdirAll(dir, 0755); err != nil {
@@ -75,14 +80,19 @@ func (c CLI) Wget(src, dst string) error {
 	if err != nil {
 		return err
 	}
-	defer file.Close()
+	defer func() {
+		cerr := file.Close()
+		if err == nil {
+			err = cerr
+		}
+	}()
 
 	_, err = io.Copy(file, response.Body)
 	if err != nil {
 		return err
 	}
 
-	return nil
+	return err
 }
 
 func (c CLI) commitMessage(code, title, message string) string {
