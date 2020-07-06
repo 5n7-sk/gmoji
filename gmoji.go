@@ -21,7 +21,7 @@ type Gmoji struct {
 	Name        string `json:"name"`
 }
 
-// Gmojis represents a list of Gmoji.
+// Gmojis represents a list of Gmojis.
 type Gmojis []Gmoji
 
 // Gitmojis represents an original gitmojis.

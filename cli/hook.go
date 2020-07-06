@@ -8,7 +8,7 @@ import (
 	"github.com/fatih/color"
 )
 
-// Hook sets commit hook.
+// Hook sets the commit hook.
 func (c CLI) Hook() error {
 	p, err := c.hookPath()
 	if err != nil {

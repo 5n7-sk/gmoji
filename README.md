@@ -31,7 +31,7 @@
   </a>
 </p>
 
-**Go implementation of [gitmoji](https://github.com/carloscuesta/gitmoji)**
+**A Go implementation of [gitmoji-cli](https://github.com/carloscuesta/gitmoji-cli)**
 
 [gitmoji](https://github.com/carloscuesta/gitmoji) is an emoji guide for commit messages.  
 This repository is a Go implementation of [gitmoji-cli](https://github.com/carloscuesta/gitmoji-cli), a CLI application of [gitmoji](https://github.com/carloscuesta/gitmoji).  
@@ -44,16 +44,16 @@ This application does not require the Node.js environment and is fast enough as 
 ```
 
 ```console
-gmoji is the Go Implementation of gitmoji.
+gmoji is a Go Implementation of gitmoji-cli.
 
 Usage:
   gmoji [flags]
   gmoji [command]
 
 Available Commands:
-  copy        Copy commit message to clipboard
+  copy        Copy the commit message to the clipboard
   help        Help about any command
-  hook        Set commit hook
+  hook        Set the commit hook
   init        Download the list of gmojis
   list        Show the list of gmojis
   version     Show version

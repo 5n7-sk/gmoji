@@ -20,8 +20,8 @@ func runHook(cmd *cobra.Command, args []string) error {
 
 var hookCmd = &cobra.Command{
 	Use:   "hook",
-	Short: "Set commit hook",
-	Long:  "Set commit hook.",
+	Short: "Set the commit hook",
+	Long:  "Set the commit hook.",
 	RunE:  runHook,
 }
 

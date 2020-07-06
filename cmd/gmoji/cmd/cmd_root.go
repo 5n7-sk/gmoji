@@ -29,8 +29,8 @@ func runRoot(cmd *cobra.Command, args []string) error {
 
 var rootCmd = &cobra.Command{
 	Use:   "gmoji",
-	Short: "gmoji is the Go Implementation of gitmoji",
-	Long:  "gmoji is the Go Implementation of gitmoji.",
+	Short: "gmoji is a Go Implementation of gitmoji-cli",
+	Long:  "gmoji is a Go Implementation of gitmoji-cli.",
 	RunE:  runRoot,
 }
 

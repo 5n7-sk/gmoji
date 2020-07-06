@@ -18,15 +18,15 @@ func runCopy(cmd *cobra.Command, args []string) error {
 		return err
 	}
 
-	fmt.Printf("%s\n", color.GreenString("Copied to clipboard successfully"))
+	fmt.Printf("%s\n", color.GreenString("Copied to the clipboard successfully"))
 
 	return nil
 }
 
 var copyCmd = &cobra.Command{
 	Use:   "copy",
-	Short: "Copy commit message to clipboard",
-	Long:  "Copy commit message to clipboard.",
+	Short: "Copy the commit message to the clipboard",
+	Long:  "Copy the commit message to the clipboard.",
 	RunE:  runCopy,
 }
 
