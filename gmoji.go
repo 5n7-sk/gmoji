@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+
+	"github.com/fatih/color"
 )
 
 const (
@@ -60,7 +62,7 @@ func (g *Gitmojis) readJSON(path string) error {
 func (g Gmojis) Selection() []string {
 	var gmojis []string
 	for _, gmoji := range g {
-		gmojis = append(gmojis, fmt.Sprintf("%s - %s", gmoji.Emoji, gmoji.Description))
+		gmojis = append(gmojis, fmt.Sprintf("%s - %s - %s", gmoji.Emoji, color.BlueString(gmoji.Code), gmoji.Description))
 	}
 
 	return gmojis
