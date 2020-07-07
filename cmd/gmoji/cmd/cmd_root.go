@@ -15,12 +15,12 @@ var (
 )
 
 func runRoot(cmd *cobra.Command, args []string) error {
-	c, err := cli.NewCLI(true, false, rootOptions.Hook)
+	c, err := cli.NewCLI()
 	if err != nil {
 		return err
 	}
 
-	if err := c.Run(); err != nil {
+	if err := c.Run(rootOptions.Hook); err != nil {
 		return err
 	}
 

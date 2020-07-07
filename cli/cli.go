@@ -17,24 +17,11 @@ const (
 
 // CLI represents this application itself.
 type CLI struct {
-	// CheckGit checks if a git repository exists.
-	CheckGit bool
-	// Clipboard doesn't commit, but copies the commit message to the clipboard.
-	Clipboard bool
-	// HookPath is the path to the file to write the commit message to.
-	HookPath string
 }
 
 // NewCLI returns a new CLI.
-func NewCLI(checkGit bool, clipboard bool, hook string) (*CLI, error) {
-	c := &CLI{CheckGit: checkGit, Clipboard: clipboard, HookPath: hook}
-	if c.CheckGit && hook == "" {
-		p, err := c.hookPath()
-		if err != nil {
-			return nil, err
-		}
-		c.HookPath = p
-	}
+func NewCLI() (*CLI, error) {
+	c := &CLI{}
 	return c, nil
 }
 

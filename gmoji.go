@@ -59,6 +59,7 @@ func (g *Gitmojis) readJSON(path string) error {
 }
 
 // Selection returns a formatted list of gmojis.
+// FIXME: The width between the emoji and the hyphen is not consistent.
 func (g Gmojis) Selection() []string {
 	var gmojis []string
 	for _, gmoji := range g {

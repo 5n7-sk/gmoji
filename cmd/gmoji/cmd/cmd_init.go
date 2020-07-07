@@ -6,7 +6,7 @@ import (
 )
 
 func runInit(cmd *cobra.Command, args []string) error {
-	c, err := cli.NewCLI(false, false, "")
+	c, err := cli.NewCLI()
 	if err != nil {
 		return err
 	}

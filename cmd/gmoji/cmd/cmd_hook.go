@@ -6,7 +6,7 @@ import (
 )
 
 func runHook(cmd *cobra.Command, args []string) error {
-	c, err := cli.NewCLI(true, false, "")
+	c, err := cli.NewCLI()
 	if err != nil {
 		return err
 	}
