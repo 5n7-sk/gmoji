@@ -5,10 +5,26 @@ import (
 	"github.com/spf13/cobra"
 )
 
+// HookOptions represents the options for hook command.
+type HookOptions struct {
+	Remove bool
+}
+
+var (
+	hookOptions HookOptions
+)
+
 func runHook(cmd *cobra.Command, args []string) error {
 	c, err := cli.NewCLI()
 	if err != nil {
 		return err
+	}
+
+	if hookOptions.Remove {
+		if err := c.RemoveHook(); err != nil {
+			return err
+		}
+		return nil
 	}
 
 	if err := c.Hook(); err != nil {
@@ -26,5 +42,7 @@ var hookCmd = &cobra.Command{
 }
 
 func init() {
+	hookCmd.Flags().BoolVarP(&hookOptions.Remove, "remove", "r", false, "remove the commit hook")
+
 	rootCmd.AddCommand(hookCmd)
 }

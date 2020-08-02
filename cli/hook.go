@@ -3,6 +3,7 @@ package cli
 import (
 	"fmt"
 	"io/ioutil"
+	"os"
 	"path/filepath"
 
 	"github.com/fatih/color"
@@ -24,6 +25,26 @@ gmoji --hook $1
 	}
 
 	fmt.Printf("%s\n", color.GreenString("gmoji commit hook created successfully"))
+
+	return nil
+}
+
+// RemoveHook removes the commit hook.
+func (c CLI) RemoveHook() error {
+	p, err := c.hookPath()
+	if err != nil {
+		return err
+	}
+
+	if _, err := os.Stat(p); os.IsNotExist(err) {
+		return fmt.Errorf("%s does not exist", p)
+	}
+
+	if err := os.Remove(p); err != nil {
+		return err
+	}
+
+	fmt.Printf("%s\n", color.GreenString("gmoji commit hook removed successfully"))
 
 	return nil
 }
