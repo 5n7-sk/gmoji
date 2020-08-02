@@ -61,6 +61,7 @@ Available Commands:
 Flags:
   -h, --help          help for gmoji
       --hook string   hook path (.git/COMMIT_EDITMSG)
+  -V, --version       show version
 
 Use "gmoji [command] --help" for more information about a command.
 ```
