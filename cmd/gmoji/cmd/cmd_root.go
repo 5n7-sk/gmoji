@@ -7,7 +7,8 @@ import (
 
 // RootOptions represents the options for root command.
 type RootOptions struct {
-	Hook string
+	Hook    string
+	Version bool
 }
 
 var (
@@ -15,6 +16,13 @@ var (
 )
 
 func runRoot(cmd *cobra.Command, args []string) error {
+	if rootOptions.Version {
+		if err := runVersion(cmd, args); err != nil {
+			return err
+		}
+		return nil
+	}
+
 	c, err := cli.NewCLI()
 	if err != nil {
 		return err
@@ -41,4 +49,5 @@ func Execute() {
 
 func init() {
 	rootCmd.Flags().StringVar(&rootOptions.Hook, "hook", "", "hook path (.git/COMMIT_EDITMSG)")
+	rootCmd.Flags().BoolVarP(&rootOptions.Version, "version", "V", false, "show version")
 }
